@@ -16,7 +16,7 @@ function getUserInput() {
     else {
         userInput = userInput.toLowerCase();
         if(userInput !== 'r' && userInput !== 'p' && userInput !== 's') {
-            window.alert("Invalid input.\nPlease enter a r for rock, p for paper, or s for scissors.");
+            window.alert("Invalid input.\nPlease enter r for rock, p for paper, or s for scissors.");
         }
         else if (userInput === 'r') {
             userSelection = 'rock';
@@ -27,6 +27,8 @@ function getUserInput() {
         else {
             userSelection = "scissors";
         }
+
+        document.getElementById("userChoice").value = "";
     }
 }
 
@@ -42,10 +44,7 @@ function compareSelections() {
 
     getUserInput();
     
-    if (userSelection === undefined) {
-        alert("Please enter a selection.");
-    }
-    else {
+    if (userSelection !== undefined) {
         document.getElementById("userPlay").value = userSelection;
         computerSelection = getComputerSelection();
         document.getElementById("computerChoice").value = computerSelection;
