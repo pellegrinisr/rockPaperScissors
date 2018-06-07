@@ -26,9 +26,7 @@ function getUserInput() {
         }
         else {
             userSelection = "scissors";
-        }
-
-        document.getElementById("userChoice").value = "";
+        };
     }
 }
 
@@ -37,10 +35,9 @@ function getComputerSelection() {
     return choices[randomNumber];
 }
 
+
 function compareSelections() {
     var winner;
-    var playerScore;
-    var computerScore;
 
     getUserInput();
     
@@ -92,18 +89,25 @@ function compareSelections() {
                 document.getElementById("winner").value = winner;
             }
         }
-        
-        playerScore = parseInt(document.getElementById("userScore").value);
-        computerScore = parseInt(document.getElementById("computerScore").value);
-        if (document.getElementById("userChoice").value !== '') {
-            if (document.getElementById("winner").value === 'player') {
-                playerScore++;
-                document.getElementById("userScore").value = playerScore;
-            }
-            else if (document.getElementById("winner").value === 'computer') {
-                computerScore++;
-                document.getElementById("computerScore").value = computerScore;
-            }
+        updateScore();
+    }
+}
+
+function updateScore() {
+    var playerScore;
+    var computerScore;
+
+    playerScore = parseInt(document.getElementById("userScore").value);
+    computerScore = parseInt(document.getElementById("computerScore").value);
+    if (document.getElementById("userChoice").value !== '') {
+        if (document.getElementById("winner").value === 'player') {
+            playerScore++;
+            document.getElementById("userScore").value = playerScore;
         }
+        else if (document.getElementById("winner").value === 'computer') {
+            computerScore++;
+            document.getElementById("computerScore").value = computerScore;
+        }
+        document.getElementById("userChoice").value = ""
     }
 }
